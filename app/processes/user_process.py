@@ -19,8 +19,8 @@ class UserProcess:
             "data": response,
             "message":
                 "El usuario fue creado exitosamente"
-                if len(response) == 1 else
-                "El usuario no fue creado exitosamente"
+                if len(response) > 1 else
+                "El usuario no fue creado"
         })
 
     def get_by_id(self, id: int):
@@ -36,7 +36,7 @@ class UserProcess:
             "data": response,
             "message":
                 f"El usuario con id {id} fue actualizado"
-                if len(response) == 1 else
+                if len(response) > 1 else
                 f"El usuario con id {id} no fue actualizado"
         })
 

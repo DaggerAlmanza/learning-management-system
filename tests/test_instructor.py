@@ -17,9 +17,15 @@ def test_get_all():
 
 
 @pytest.mark.django_db
+def test_get_all_courses():
+    result = repository.get_all_courses(1)
+    assert isinstance(result, list)
+
+
+@pytest.mark.django_db
 def test_save_instructor():
     result = repository.save_instructor(data)
-    assert isinstance(result, dict) or isinstance(result, str)
+    assert isinstance(result, dict)
 
 
 @pytest.mark.django_db

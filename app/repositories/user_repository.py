@@ -25,7 +25,7 @@ class UserRepository(Queries):
         try:
             user.save()
         except Exception as error:
-            return str(error)
+            return {"error": str(error)}
         return user.to_json()
 
     def update_user(self, params: dict, id: int) -> dict:

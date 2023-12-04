@@ -1,5 +1,6 @@
 from django.db import models
 from app.models.user_model import UserModel
+from app.models.course_model import CourseModel
 
 
 class StudentModel(models.Model):
@@ -42,6 +43,10 @@ class StudentModel(models.Model):
         'Celular del Acudiente',
         null=False,
         blank=False,
+    )
+    courses = models.ManyToManyField(
+        CourseModel,
+        related_name='students',
     )
 
     class Meta:

@@ -48,7 +48,7 @@ proyecto.
 
 ### Modelo de la base de datos
 
-[![lms.jpg](https://i.postimg.cc/XYHK1CPp/lms.jpg)](https://postimg.cc/xXmbccn2)
+[![lms-1.jpg](https://i.postimg.cc/brv22P65/lms-1.jpg)](https://postimg.cc/vgpmpJw7)
 
 <!-- GETTING STARTED -->
 ## Iniciando
@@ -59,6 +59,7 @@ Este es un ejemplo de como deberian instalar el proyecto localmente dada las ins
 ### Intalacion 
 
 1. Instalar virtualEnv e instalarlo
+Linux
 ```sh
 $ virtualenv -p python3 venv
 o
@@ -68,6 +69,13 @@ $ python3 -m venv venv
 $ source venv/bin/activate
 o
 $ . venv/bin/activate
+```
+Windows
+```sh
+$ python -m venv venv
+```
+```sh
+$ venv/Scripts/activate
 ```
 2. Instalar requirements.txt
 ```sh
@@ -150,6 +158,6 @@ Nota: Se realizó un análisis estático del código, arrojando:
 8min Debt		                        1Code Smells		                Maintainability A
 ~~~
 ~~~
-0.0% Coverage on 119 Lines to cover	    0.0% Duplications on 284 Lines 	0 Duplicated Blocks
+0.0% Coverage on 191 Lines to cover	    0.0% Duplications on 504 Lines 	0 Duplicated Blocks
 ~~~
 			

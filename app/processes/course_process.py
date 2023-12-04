@@ -29,7 +29,7 @@ class CourseProcess:
                     "data": response,
                     "message":
                         "El curso fue creado exitosamente"
-                        if len(response) == 1 else
+                        if len(response) > 1 else
                         "El curso no fue creado exitosamente"
                 })
             except Exception as error:
@@ -38,12 +38,13 @@ class CourseProcess:
                     "message": "El instructor no ha creado la cuenta de instructor",
                 }
                 return Response(response, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            response = {
+        return Response(
+            {
                 "data": "",
                 "message": "El curso no fue creado, el usuario es un Estudiante",
-            }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )
 
     def get_by_id(self, id: int):
         response = repository.get_by_id(id)

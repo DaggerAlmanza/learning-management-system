@@ -13,6 +13,7 @@ class StudentSerializer(serializers.ModelSerializer):
             'cell_phone',
             'guardians_name',
             'guardians_phone',
+            'courses',
         ]
         read_only_fields = (
             'id',

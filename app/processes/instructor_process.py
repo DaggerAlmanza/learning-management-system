@@ -26,7 +26,7 @@ class InstructorProcess:
             "message": "Estos son todos los datos de cursos del instructor en la base de datos",
         })
 
-    def get_all_(self):
+    def get_all(self):
         response = repository.get_all()
         return Response({
             "data": response,
@@ -43,14 +43,16 @@ class InstructorProcess:
                 "data": response,
                 "message":
                     "El instructor fue creado exitosamente"
-                    if len(response) == 1 else
+                    if len(response) > 1 else
                     "El instructor no fue creado exitosamente"
             })
-        response = {
-            "data": "",
-            "message": "El instructor no fue creado, el usuario es un Estudiante",
-        }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+        return Response(
+            {
+                "data": "",
+                "message": "El instructor no fue creado, el usuario es un Estudiante",
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )
 
     def get_by_id(self, id: int):
         response = repository.get_by_id(id)
