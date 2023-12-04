@@ -1,6 +1,6 @@
+from app.models.user_model import UserModel
 from app.queries import Queries
 from app.serializers.user_serializers import UserSerializer
-from app.models.user_model import UserModel
 
 
 class UserRepository(Queries):
