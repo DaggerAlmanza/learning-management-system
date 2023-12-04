@@ -26,7 +26,7 @@ class InstructorProcess:
             "message": "Estos son todos los datos de cursos del instructor en la base de datos",
         })
 
-    def get_all_(self):
+    def get_all(self):
         response = repository.get_all()
         return Response({
             "data": response,
