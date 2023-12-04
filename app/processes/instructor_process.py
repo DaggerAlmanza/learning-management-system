@@ -10,7 +10,23 @@ repository = InstructorRepository()
 
 
 class InstructorProcess:
-    def get_all(self):
+    def get_all_courses(self, user: dict):
+        instructor = repository.get_by_id(user["id"])
+        if not instructor:
+            return Response(
+                {
+                    "data": "",
+                    "message": f"El instructor con id {id} no existe"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        response = repository.get_all_courses(instructor["id"])
+        return Response({
+            "data": response,
+            "message": "Estos son todos los datos de cursos del instructor en la base de datos",
+        })
+
+    def get_all_(self):
         response = repository.get_all()
         return Response({
             "data": response,

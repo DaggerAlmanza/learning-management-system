@@ -8,6 +8,22 @@ from rest_framework.views import APIView
 instructor_process = InstructorProcess()
 
 
+class InstructorCourseView(
+    APIView
+):
+    permission_classes = [IsAuthenticated]
+    serializer_class = InstructorSerializer
+
+    @extend_schema(
+        tags=['instructor'],
+        description="""Obtener Todos los cursos del Instructor: \n
+        ◦ Este endpoint proporciona una lista completa de todos los cursos del instructor registrados en la base de datos del sistema.
+        """
+    )
+    def get(self, request):
+        return instructor_process.get_all_courses(request._user.to_json())
+
+
 class InstructorView(
     APIView
 ):
@@ -22,7 +38,10 @@ class InstructorView(
         """
     )
     def post(self, request):
-        return instructor_process.save_data(request.data, request._user.to_json())
+        return instructor_process.save_data(
+            request.data,
+            request._user.to_json()
+        )
 
     @extend_schema(
         tags=['instructor'],

@@ -8,6 +8,7 @@ from rest_framework import routers
 from app.views.instructor_view import (
     InstructorPkView,
     InstructorView,
+    InstructorCourseView,
 )
 from app.views.course_view import (
     CoursePkView,
@@ -49,6 +50,11 @@ urlpatterns = [
         'api/instructor/<int:pk>',
         InstructorPkView.as_view(),
         name='instructor_pk'
+    ),
+    path(
+        'api/instructor/course',
+        InstructorCourseView.as_view(),
+        name='instructor_course'
     ),
 
     path(

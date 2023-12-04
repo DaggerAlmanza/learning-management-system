@@ -42,13 +42,13 @@ README:
 proyecto.
 
 ### Construido con
-* Lenguaje: Python 3.10.5
+* Lenguaje: Python 3.10.12
 * Framework: Django REST Framework 
 * Base de dato: sqlite3
 
 ### Modelo de la base de datos
 
-[![lms-Page-2.jpg](https://i.postimg.cc/kXDtYQ1k/lms-Page-2.jpg)](https://postimg.cc/1fhtfqZH)
+[![lms.jpg](https://i.postimg.cc/XYHK1CPp/lms.jpg)](https://postimg.cc/xXmbccn2)
 
 <!-- GETTING STARTED -->
 ## Iniciando
@@ -130,6 +130,8 @@ Eliminación de un Estudiante:
 Creación, Actualización y Eliminación de un Curso a Cargo:
 
 * Solo el instructor puede realizar la creación, actualización y eliminación de un curso a cargo.
+
+* Consultas de todos los cursos del instructor.
 
 4.	Para salir del api se hace el logout.
 
