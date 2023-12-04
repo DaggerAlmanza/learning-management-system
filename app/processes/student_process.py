@@ -32,12 +32,14 @@ class StudentProcess:
                     if len(response) == 1 else
                     NO_CREATED
             })
-        response = {
-            "data": "",
-            "message": NO_CREATED +
-            "La creación esta a cargo del mismo estudiante.",
-        }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+        return Response(
+            {
+                "data": "",
+                "message": NO_CREATED +
+                "La creación esta a cargo del mismo estudiante.",
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )
 
     def get_by_id(self, id: int):
         response = repository.get_by_id(id)
@@ -58,18 +60,22 @@ class StudentProcess:
                         if response else
                         f"El estudiante con id {id} no fue actualizado"
                 })
-            response = {
-                "data": "",
-                "message": NO_UPDATED +
-                "las actualizaciones están a cargo del estudiante titular."
-            }
-        else:
-            response = {
+            return Response(
+                {
+                    "data": "",
+                    "message": NO_UPDATED +
+                    "las actualizaciones están a cargo del estudiante titular."
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+        return Response(
+            {
                 "data": "",
                 "message": NO_UPDATED +
                 "el usuario es un Instructor",
-            }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )
 
     def delete_data(self, id: int, user: dict):
         if user["is_instructor"]:
@@ -81,11 +87,13 @@ class StudentProcess:
                     if response else
                     f"El estudiante con id {id} no fue eliminado"
             })
-        response = {
-            "data": "",
-            "message": (
-                "El estudiante no fue eliminado, "
-                "La eliminado esta a cargo del los instructores.",
-            )
-        }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+        return Response(
+            {
+                "data": "",
+                "message": (
+                    "El estudiante no fue eliminado, "
+                    "La eliminado esta a cargo del los instructores.",
+                )
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )

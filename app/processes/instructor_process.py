@@ -63,23 +63,35 @@ class InstructorProcess:
                         if response else
                         f"El instructor con id {id} no fue actualizado"
                 })
-            response = {
-                "data": "",
-                "message": "El instructor no fue actualizado, " +
-                "las actualizaciones están a cargo solo del tutor."
-            }
-        else:
-            response = {
+            return Response(
+                {
+                    "data": "",
+                    "message": "El instructor no fue actualizado, " +
+                    "las actualizaciones están a cargo solo del tutor."
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+        return Response(
+            {
                 "data": "",
                 "message": "El instructor no fue actualizado, " +
                 "el usuario es un Estudiante",
-            }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )
 
     def delete_data(self, id: int, user: dict):
         if user["is_instructor"]:
             instructor = repository.get_by_id(id)
-            if instructor["user"]["id"] == user["id"]:
+            if not instructor:
+                return Response(
+                    {
+                        "data": "",
+                        "message": f"El instructor con id {id} no existe"
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            elif instructor["user"]["id"] == user["id"]:
                 response = repository.delete_one(id)
                 return Response({
                     "data": response,
@@ -88,19 +100,22 @@ class InstructorProcess:
                         if response else
                         f"El instructor con id {id} no fue eliminado"
                 })
-            response = {
-                "data": "",
-                "message": (
-                    "El instructor no fue eliminado, "
-                    "las eliminaciones están a cargo solo del tutor."
-                )
-            }
-        else:
-            response = {
+            return Response({
+                    "data": "",
+                    "message": (
+                        "El instructor no fue eliminado, "
+                        "las eliminaciones están a cargo solo del tutor."
+                    )
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+        return Response(
+            {
                 "data": "",
                 "message": (
                     "El instructor no fue eliminado, "
                     "el usuario es un Estudiante",
                 )
-            }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )

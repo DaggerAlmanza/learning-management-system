@@ -72,18 +72,22 @@ class CourseProcess:
                         if response else
                         f"El curso con id {id} no fue actualizado"
                 })
-            response = {
-                "data": "",
-                "message": "El curso no fue actualizado, " +
-                "las actualizaciones están a cargo solo del tutor."
-            }
-        else:
-            response = {
+            return Response(
+                {
+                    "data": "",
+                    "message": "El curso no fue actualizado, " +
+                    "las actualizaciones están a cargo solo del tutor."
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+        return Response(
+            {
                 "data": "",
                 "message": "El curso no fue actualizado, " +
                 "el usuario es un Estudiante",
-            }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )
 
     def delete_data(self, id: int, user: dict):
         if user["is_instructor"]:
@@ -105,19 +109,23 @@ class CourseProcess:
                         if response else
                         f"El curso con id {id} no fue eliminado"
                 })
-            response = {
-                "data": "",
-                "message": (
-                    "El curso no fue eliminado, "
-                    "las eliminaciones están a cargo solo del tutor."
-                )
-            }
-        else:
-            response = {
+            return Response(
+                {
+                    "data": "",
+                    "message": (
+                        "El curso no fue eliminado, "
+                        "las eliminaciones están a cargo solo del tutor."
+                    )
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
+        return Response(
+            {
                 "data": "",
                 "message": (
                     "El curso no fue eliminado, "
                     "el usuario es un Estudiante",
                 )
-            }
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
+            },
+            status=status.HTTP_403_FORBIDDEN
+        )
