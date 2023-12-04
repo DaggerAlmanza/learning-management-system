@@ -1,7 +1,7 @@
+from app.helpers import GeneralHelpers
+from app.models.course_model import CourseModel
 from app.queries import Queries
 from app.serializers.course_serializers import CourseSerializer
-from app.models.course_model import CourseModel
-from app.helpers import GeneralHelpers
 
 
 class CourseRepository(Queries):
