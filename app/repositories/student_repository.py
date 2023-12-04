@@ -1,7 +1,7 @@
+from app.helpers import GeneralHelpers
+from app.models.student_model import StudentModel
 from app.queries import Queries
 from app.serializers.student_serializers import StudentSerializer
-from app.models.student_model import StudentModel
-from app.helpers import GeneralHelpers
 
 
 class StudentRepository(Queries):
