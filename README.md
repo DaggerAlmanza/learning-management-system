@@ -46,6 +46,9 @@ proyecto.
 * Framework: Django REST Framework 
 * Base de dato: sqlite3
 
+### Modelo de la base de datos
+
+[![lms-Page-2.jpg](https://i.postimg.cc/kXDtYQ1k/lms-Page-2.jpg)](https://postimg.cc/1fhtfqZH)
 
 <!-- GETTING STARTED -->
 ## Iniciando
