@@ -34,12 +34,18 @@ class UserProcess:
         response = repository.update_user(data, id)
         return Response({
             "data": response,
-            "message": f"El usuario con id {id} fue actualizado"
+            "message":
+                f"El usuario con id {id} fue actualizado"
+                if len(response) == 1 else
+                f"El usuario con id {id} no fue actualizado"
         })
 
     def delete_data(self, id: int):
         response = repository.delete_one(id)
         return Response({
             "data": response,
-            "message": f"El usuario con id {id} fue eliminado"
+            "message":
+                f"El usuario con id {id} fue eliminado"
+                if response else
+                f"El usuario con id {id} no fue eliminado"
         })

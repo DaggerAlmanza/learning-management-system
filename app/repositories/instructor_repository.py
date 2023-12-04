@@ -1,7 +1,7 @@
+from app.helpers import GeneralHelpers
+from app.models.instructor_model import InstructorModel
 from app.queries import Queries
 from app.serializers.instructor_serializers import InstructorSerializer
-from app.models.instructor_model import InstructorModel
-from app.helpers import GeneralHelpers
 
 
 class InstructorRepository(Queries):

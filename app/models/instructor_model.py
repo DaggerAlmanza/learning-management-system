@@ -1,5 +1,5 @@
-from django.db import models
 from app.models.user_model import UserModel
+from django.db import models
 
 
 class InstructorModel(models.Model):
